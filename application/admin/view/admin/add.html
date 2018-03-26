@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="__PUBLIC__/css/ch-ui.admin.css">
+	<link rel="stylesheet" href="__PUBLIC__/font/css/font-awesome.min.css">
+</head>
+<body>
+    <!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
+        <i class="fa fa-home"></i> <a href="{:url('index/welcome')}">首页</a> &raquo; <a href="{:url('admin/lst')}">管理员管理</a> &raquo; 添加管理员
+    </div>
+    <!--面包屑导航 结束-->
+    
+    <div class="result_wrap">
+        <form action="" method="post" enctype="multipart/form-data">
+            <table class="add_tab">
+                <tbody>
+                    <tr>
+                        <th><i class="require">*</i>用户名：</th>
+                        <td>
+                            <input type="text" name="username" placeholder="请输入用户名">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="require">*</i>密码：</th>
+                        <td>
+                            <input type="password" name="password" placeholder="请输入密码">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>头像：</th>
+                        <td><input type="file" name="image"></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input type="submit" value="提交">
+                            <input type="button" class="back" onclick="history.go(-1)" value="返回">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+</body>
+</html>

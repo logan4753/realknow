@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="__PUBLIC__/css/ch-ui.admin.css">
+    <link rel="stylesheet" href="__PUBLIC__/font/css/font-awesome.min.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/ch-ui.admin.js"></script>
+</head>
+<body>
+    <!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
+        <i class="fa fa-home"></i> <a href="{:url('index/welcome')}">首页</a> &raquo; <a href="{:url('resources/lst')}">分享管理</a> &raquo; 编辑分享
+    </div>
+    <!--面包屑导航 结束-->
+    
+    <div class="result_wrap">
+        <form action="" method="post" enctype="multipart/form-data">
+            <table class="add_tab">
+                <tbody>
+                    <tr>
+                        <th><i class="require">*</i>分享标题：</th>
+                        <td>
+                            <input type="hidden" name="id" value="{$row.id}">
+                            <input type="text" name="resname" value="{$row.resname}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>简图：</th>
+                        <td><input type="file" name="resimg[]" multiple>
+                            {volist name="imgarr" id="vo"}
+                                <img src="__IMG__{$vo}" height="50">
+                            {/volist}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>分享地址：</th>
+                        <td><textarea name="resadd" class="form-control">{$row.resadd}</textarea></td>
+                    </tr>
+                    <tr>
+                        <th>描述：</th>
+                        <td><textarea name="resdesc" class="form-control">{$row.resdesc}</textarea></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input type="submit" value="提交">
+                            <input type="button" class="back" onclick="history.go(-1)" value="返回">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+</body>
+</html>

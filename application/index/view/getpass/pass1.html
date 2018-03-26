@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta name="referrer" content="always"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="x-ua-compatible" content="ie=8"/>
+    <meta name="saoatech-site-verification" content="N2Y5MzU2M2YyNmVhOTllMGQwYmI4NzAwMTIxYmE2ZDU=" />
+    <link rel="shortcut icon" href="__PUBLIC__/images/favicon.ico" />
+    <title>甄博知（寻梦）</title>
+    <meta name="keywords" content="个人博客,甄博知" />
+    <meta name="description" content="甄博知，学习、交流的平台。" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/dajie.63256.css"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/1038d.css"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/login.57564.css"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/guanke-bottom-float.58631.css"/>
+    <script src="__PUBLIC__/js/jquery.min.js" type="text/javascript"></script>
+</head>
+<body >
+<script type="text/javascript">var  _body_start = new Date();</script>
+    <div id="J_djResourcesVersion" style="display: none;">
+        <input type="hidden" name="env" value="online"/>
+        <input type="hidden" name="bigVersion" value="63256"/>
+            <input type="hidden" name="rollbackId" value="1"/>
+    </div>
+<div class="dj-content-wrap " id="dj-content-wrap">
+    <div class="dj-content-inner">
+            <div class="dj-content-shadow">
+
+<div class="loginHtml">
+    <div class="loginContent">
+        <div class='loginBox'>
+            <div class="loginTop">
+                <a href="{:url('index/index')}" class="logo"></a>
+            </div>
+            <div class="cardBox forgetPos">
+                <div class="cardLeft">
+                    <h5>使用邮箱重置密码</h5>
+
+                    <div class="forgetUl">
+                        <ul>
+                            <li class="one click"><em>1</em><span>输入账号</span></li>
+                            <li class="line"></li>
+                            <li class="two"><em>2</em><span>验证帐号</span></li>
+                            <li class="line"></li>
+                            <li class="three"><em>3</em><span>重置密码</span></li>
+                        </ul>
+                    </div>
+                    <div class="formBox">
+                        <ul>
+                            <li class="">
+                                <span class="inputTitle account"></span>
+                                <input type="text" placeholder="请输入邮箱" id="email"  />
+                                <em class="iconInput"></em>
+                                <span id="chkmsg" class="errorText" style="display:none;"></span>
+                            </li>
+                        </ul>
+                        <a id="getAccount" class="finishBtn">获取验证信息</a>
+                    </div>
+                </div>
+                <div class="cardRight">
+                    <p><a href="{:url('visiter/login')}" class="backHome">返回登录</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+    </div>
+</div>
+<script type="text/javascript">
+$(function(){ 
+    $("#getAccount").click(function(){ 
+        var email = $("#email").val(); 
+        var preg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/; //匹配Email 
+        if(email=='' || !preg.test(email)){ 
+            $("#chkmsg").css("display","inline");
+            $("#chkmsg").html("请填写正确的邮箱！"); 
+        }else{ 
+            $("#chkmsg").css("display","none");
+            $("#getAccount").attr("disabled","disabled").val('提交中..').css("cursor","default"); 
+            $.post("{:url('getpass/pass')}",{mail:email},function(status){ 
+                if(status.msg=="nomsg"){  
+                    $("#chkmsg").css("display","inline");
+                    $("#chkmsg").html("该邮箱尚未注册！");
+                    $("#getAccount").removeAttr("disabled").val('提 交').css("cursor","pointer"); 
+                }else if(status.msg==1){
+                    window.location.href = "{:url('getpass/pass2')}";
+                }else{
+                    $("#chkmsg").css("display","inline");
+                    $("#chkmsg").html(status.result);
+                    $("#getAccount").removeAttr("disabled").val('提 交').css("cursor","pointer"); 
+                }
+            }); 
+        } 
+    }); 
+}) 
+</script>
+</body>
+</html>

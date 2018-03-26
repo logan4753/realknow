@@ -1,0 +1,37 @@
+{include file="common::header" /}
+<link href="__PUBLIC__/css/mood.css" rel="stylesheet">
+<style>
+	.top_show .heade{height:40px;border-bottom:1px solid #000;padding-bottom:10px;}
+	.title_head{width:200px;height:30px;}
+	.title_head div{background-color:#f4ed03;color:red;width:150px;height:30px;font-size:24px;text-align:center;border-radius:15px;line-height:30px;}
+	.top_show{border-bottom:1px dotted #666;margin-bottom:20px;padding-bottom:25px;}
+	.bot_show .content{padding:20px 0;}
+	.textarea-text{border-radius:15px;}
+	.submit_button{width:80px;height:28px;line-height:28px;font-size:18px;border-radius:8px;color:#fff;background-color:#03a9f4;}
+	.dateview{width:200px !important;}
+</style>
+<article class="blogs">
+	<div class='top_show'>
+		<div class='heade'><h2 class="title_head"><div>精彩留言</div></h2></div>
+	  	{volist name="lists" id="vo"}
+	    	<ul class="arrow_box">
+	         	<div class="sy">
+	      			<p> {$vo.content}</p>
+	        	</div>
+	      		<span class="dateview">{$vo.contact}·{$vo['time']|date="Y-m-d",###}</span>
+	    	</ul>
+	  	{/volist}
+	</div>
+	<div class='bot_show'>
+		<div class='heade'><h2 class="title_head"><div>我要留言：</div></h2></div>
+		<div class='content'>
+		    <form method='POST' name='myform' action="{:url('index/comments')}">
+				<textarea name='content' cols='100' rows='10' class='textarea-text'></textarea></br>
+				<input type='submit' name='Submit' value='发表' class='submit_button'>
+			</form>
+		</div>
+	</div>
+</article>
+
+
+{include file="common::footer" /}

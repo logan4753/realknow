@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="__PUBLIC__/css/ch-ui.admin.css">
+    <link rel="stylesheet" href="__PUBLIC__/font/css/font-awesome.min.css">
+</head>
+<body>
+    <!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
+        <i class="fa fa-home"></i> <a href="{:url('index/welcome')}">首页</a> &raquo; <a href="{:url('links/lst')}">链接管理</a> &raquo; 编辑链接
+    </div>
+    <!--面包屑导航 结束-->
+    
+    <div class="result_wrap">
+        <form action="" method="post">
+            <table class="add_tab">
+                <tbody>
+                    <tr>
+                        <th>链接名称：</th>
+                        <td>
+                            <input type="hidden" class="lg" name="id" value="{$row.id}">
+                            <input type="text" class="lg" name="linkname" value="{$row.linkname}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>链接地址：</th>
+                        <td>
+                            <input type="text" class="lg" name="linkurl" value="{$row.linkurl}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>描述：</th>
+                        <td><textarea name="desc" class="form-control">{$row.desc}</textarea></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input type="submit" value="提交">
+                            <input type="button" class="back" onclick="history.go(-1)" value="返回">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+</body>
+</html>

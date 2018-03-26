@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="__PUBLIC__/css/ch-ui.admin.css">
+    <link rel="stylesheet" href="__PUBLIC__/font/css/font-awesome.min.css">
+    <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
+</head>
+<body>
+    <!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
+        <i class="fa fa-home"></i> <a href="{:url('index/welcome')}">首页</a> &raquo; <a href="{:url('about/lst')}">个人信息</a> &raquo; 编辑信息
+    </div>
+    <!--面包屑导航 结束-->
+    
+    <div class="result_wrap">
+        <form action="" method="post" enctype="multipart/form-data">
+            <table class="add_tab">
+                <tbody>
+                    <tr>
+                        <th>标题：</th>
+                        <td>
+                            <input type="hidden" class="lg" name="id" value="{$row.id}">
+                            <input type="text" class="lg" name="title" value="{$row.title}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>详情：</th>
+                        <td><script id="editor" name="cont" type="text/plain" style="width:800px;height:500px;">{$row.cont}</script></td>
+                    </tr>
+                    <tr>
+                        <th>展示：</th>
+                        <td>
+                            {if condition="$row.status eq 1"}
+                                <span style="padding-right:20px;"><input type="radio" class="lg" name="status" value="1" checked>展示</span><span><input type="radio" class="lg" name="status" value="0">不展示</span>
+                            {else /}
+                                <span style="padding-right:20px;"><input type="radio" class="lg" name="status" value="1">展示</span><span><input type="radio" class="lg" name="status" value="0" checked>不展示</span>
+                            {/if}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input type="submit" value="提交">
+                            <input type="button" class="back" onclick="history.go(-1)" value="返回">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+</body>
+</html>
+<script  type="text/javascript">
+    var ue = UE.getEditor('editor');
+</script>

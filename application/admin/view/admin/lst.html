@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="__PUBLIC__/css/ch-ui.admin.css">
+	<link rel="stylesheet" href="__PUBLIC__/font/css/font-awesome.min.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/ch-ui.admin.js"></script>
+</head>
+<body>
+    <!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
+        <i class="fa fa-home"></i> <a href="{:url('index/welcome')}">首页</a> &raquo;管理员管理
+    </div>
+    <!--面包屑导航 结束-->
+
+    <!--搜索结果页面 列表 开始-->
+    <form action="#" method="post">
+        <div class="result_wrap">
+            <!--快捷导航 开始-->
+            <div class="result_content">
+                <div class="short_wrap">
+                    <a href="{:url('admin/add')}"><i class="fa fa-plus"></i>添加管理员</a>
+                </div>
+            </div>
+            <!--快捷导航 结束-->
+        </div>
+
+        <div class="result_wrap">
+            <div class="result_content">
+                <table class="list_tab">
+                    <tr>
+                        <th class="tc" width="20%">ID</th>
+                        <th class="tc" width="35%">用户名</th>
+                        <th class="tc" width="30%">头像</th>
+                        <th class="tc" width="15%">操作</th>
+                    </tr>
+                    {volist name='list' id='val'}
+                    <tr>
+                        <td class="tc">{$val.id}</td>
+                        <td class="tc">{$val.username}</td>
+                        <td class="tc">
+                            {if condition="$val['image'] neq '' "}
+                                <img src="__IMG__{$val.image}" height="40">
+                            {else /}
+                                暂无缩略图
+                            {/if}
+                        </td>
+                        <td class="tc">
+                            <a href="{:url('admin/edit',array('id'=>$val['id']))}"><i class="fa fa-pencil"></i>修改</a>
+                            <a href="{:url('admin/del',array('id'=>$val['id']))}"><i class="fa fa-trash-o"></i>删除</a>
+                        </td>
+                    </tr>
+                    {/volist}
+                </table>
+                <div class="page_nav">
+                {$list->render()}
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--搜索结果页面 列表 结束-->
+
+
+
+</body>
+</html>

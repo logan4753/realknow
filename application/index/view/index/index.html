@@ -1,0 +1,94 @@
+{include file="common::header" /}
+<link href="__PUBLIC__/css/index.css" rel="stylesheet">
+<div class="banner">
+    <section class="box">
+        <ul class="texts">
+            <p>学习知识要善于思考，思考，再思考。</p>
+            <p>更加努力地学习，更加勤奋地操练，</p>
+            <p>你所付出的一切，将会得到报答。</p>
+        </ul>
+        <div class="avatar"><a href="#"><span>甄博知</span></a> </div>
+    </section>
+</div>
+<div class="template">
+    <div class="box">
+        <h3>
+            <p><span>学习资料</span>分享 Materials</p>
+        </h3>
+        <ul>
+            {volist name="resources" id="vo"}
+            <li><a href="{$vo.resadd}"  target="_blank">
+                {if condition="$vo['resimg'] neq '' "}
+                    <img src="__IMG__{$vo.resimg}">
+                {else /}
+                  暂无缩略图
+                {/if}</a><span>{$vo.resname}</span></li>
+            {/volist}
+        </ul>
+    </div>
+</div>
+<article>
+    <h2 class="title_tj">
+        <p>文章<span>推荐</span></p>
+    </h2>
+    <div class="bloglist left">
+        {volist name="nshow" id="vo"}
+        <h3>{$vo.title}</h3>
+        <figure>
+            {if condition="$vo['img'] neq '' "}
+                <img src="__IMG__{$vo.img}">
+            {else /}
+                <img src="__PUBLIC__/images/logo.jpg">
+            {/if}
+        </figure>
+        <ul>
+            <p>{$vo.desc}</p>
+            <a title="/" href="{:url('index/knowledge',array('id'=>$vo['id']))}" target="_blank" class="readmore">阅读全文>></a>
+        </ul>
+        <p class="dateview"><span>{$vo['time']|date="Y-m-d",###}</span><span>作者：{$vo.author}</span><!-- <span>个人博客：[<a href="/news/life/">程序人生</a>]</span> --></p>
+        {/volist}
+    </div>
+    <aside class="right">
+        <!--  <div class="weather"><iframe width="250" scrolling="no" height="60" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=1"></iframe></div> -->
+        <div class="news">
+            <h3>
+                <p>前沿<span>科技</span></p>
+            </h3>
+            <ul class="rank">
+                {volist name="news" id="vo"}
+                <li><a href="{:url('index/news',array('id'=>$vo['id']))}" title="{$vo.title}" target="_blank">{$vo.title}</a></li>
+                {/volist}
+            </ul>
+            <h3 class="ph">
+                <p>最近<span>更新</span></p>
+            </h3>
+            <ul class="paih">
+                {volist name="shows" id="vo"}
+                <li><a href="{:url('index/knows',array('id'=>$vo['id']))}" title="{$vo.title}" target="_blank">{$vo.title}</a></li>
+                {/volist}
+            </ul>
+            <h3 class="links">
+                <p>友情<span>链接</span></p>
+            </h3>
+            <ul class="website">
+                {volist name="links" id="vo"}
+                <li><a href="{$vo.linkurl}" target="_blank">{$vo.linkname}</a></li>
+                {/volist}
+            </ul> 
+        </div>  
+        <!-- Baidu Button BEGIN -->
+        <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+            <a class="bds_tsina"></a>
+            <a class="bds_qzone"></a>
+            <span class="bds_more"></span>
+            <a class="shareCount"></a>
+        </div>
+        <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6574585" ></script> 
+        <script type="text/javascript" id="bdshell_js"></script> 
+        <script type="text/javascript">
+            document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+        </script> 
+        <!-- Baidu Button END -->   
+    </aside>
+</article>
+{include file="common::footer" /}

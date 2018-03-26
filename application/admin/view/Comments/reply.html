@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="__PUBLIC__/css/ch-ui.admin.css">
+	<link rel="stylesheet" href="__PUBLIC__/font/css/font-awesome.min.css">
+</head>
+<body>
+    <!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
+        <i class="fa fa-home"></i> <a href="{:url('index/welcome')}">首页</a> &raquo; <a href="{:url('comments/lst')}">留言管理</a> &raquo; 回复留言
+    </div>
+    <!--面包屑导航 结束-->
+    
+    <div class="result_wrap">
+        <form action="" method="post">
+            <table class="add_tab">
+                <tbody>
+                    <tr>
+                        <th>留言人：</th>
+                        <td>
+                            <input type="hidden" class="lg" name="id" value="{$row.id}">
+                            {$row.visitor}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>时间：</th>
+                        <td>
+                            {$row.time|date="Y-m-d H:i:s",###}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>留言内容：</th>
+                        <td>{$row.content}</td>
+                    </tr>
+                    <tr>
+                        <th>回复：</th>
+                        <td><textarea name="reply" class="form-control"></textarea></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input type="submit" value="提交">
+                            <input type="button" class="back" onclick="history.go(-1)" value="返回">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+</body>
+</html>
